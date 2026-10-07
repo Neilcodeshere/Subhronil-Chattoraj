@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800">
+  <defs>
+    <radialGradient id="background" cx="75%" cy="15%" r="100%"><stop stop-color="#483069"/><stop offset=".6" stop-color="#21172f"/><stop offset="1" stop-color="#131018"/></radialGradient>
+    <linearGradient id="ink" x2="1" y2="1"><stop stop-color="#ede1ff"/><stop offset="1" stop-color="#af86e3"/></linearGradient>
+    <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse"><path d="M80 0H0V80" fill="none" stroke="#bd9ae0" stroke-opacity=".09"/></pattern>
+  </defs>
+  <rect width="800" height="800" fill="url(#background)"/>
+  <rect width="800" height="800" fill="url(#grid)"/>
+  <g fill="none" stroke="#c6a5ec" stroke-opacity=".2"><circle cx="400" cy="368" r="252"/><circle cx="400" cy="368" r="224"/><path d="M80 368h640M400 48v640"/></g>
+  <path d="M565 202c-1 59-29 89-83 89 0-53 28-83 83-89Z" fill="#c7a6ed" opacity=".8"/>
+  <text x="400" y="447" text-anchor="middle" fill="url(#ink)" font-family="Georgia,serif" font-size="218" letter-spacing="-16">SG</text>
+  <text x="400" y="588" text-anchor="middle" fill="#f2e9fc" font-family="Arial,sans-serif" font-size="32" letter-spacing="4">SRISHTI GREEN DECOR</text>
+  <text x="400" y="630" text-anchor="middle" fill="#b5a3c9" font-family="Arial,sans-serif" font-size="17" letter-spacing="3">HANDCRAFTED · ECO-FRIENDLY DÉCOR</text>
+  <text x="400" y="731" text-anchor="middle" fill="#9c83b7" font-family="Arial,sans-serif" font-size="15" letter-spacing="4">PROJECT 01 / PLACEHOLDER COVER</text>
+</svg>
