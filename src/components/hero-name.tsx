@@ -3,8 +3,7 @@
 import { useEffect, useRef } from "react";
 import { useIntroReady } from "./intro-provider";
 
-// Inspired by the symbol-to-letter reveal in Rithvik Shetty's GET IN TOUCH
-// banner: https://github.com/rithvikshettyy/rithvikshetty/blob/main/components/text-scramble.tsx
+// Left-to-right symbol reveal with stable letter sizing and hover replay.
 const SYMBOLS = "!@#$%^&*()_+~|}{[]:;?><,./-=";
 const FRAME_INTERVAL = 35;
 const LETTER_STEP = 0.3;

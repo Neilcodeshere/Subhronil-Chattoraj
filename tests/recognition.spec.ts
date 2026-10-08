@@ -17,16 +17,21 @@ test("hero name is centered on desktop and mobile without the decorative orb", a
   await page.screenshot({ path: testInfo.outputPath("centered-hero-mobile.png") });
 });
 
-test("recognition title fades into six tilt cards with keyboard-accessible details", async ({ page }, testInfo) => {
+test("recognition title fades into five tilt cards with keyboard-accessible details", async ({ page }, testInfo) => {
   const errors: string[] = [];
   page.on("pageerror", (error) => errors.push(error.message));
   await page.goto("/#recognition");
   await expect(page.locator("[data-loading-screen]")).toHaveCount(0);
   await expect(page.getByRole("heading", { name: "Awards & recognition", exact: true })).toBeInViewport();
-  await expect(page.locator(".recognition-count")).toHaveText("(6)");
+  await expect(page.locator(".recognition-count")).toHaveText("(5)");
   await page.locator(".recognition-hero").screenshot({ path: testInfo.outputPath("recognition-title-desktop.png") });
   const cards = page.locator(".award-tile");
-  await expect(cards).toHaveCount(6);
+  await expect(cards).toHaveCount(5);
+  await expect(page.getByAltText("SustainX winners holding trophies at SIES Graduate School of Technology")).toBeVisible();
+  await expect(page.getByAltText("Newbie Award recipient holding a trophy at SIES Graduate School of Technology")).toBeVisible();
+  await expect(page.getByAltText("Dr. Stya Paul Award recipient receiving recognition at Apeejay School")).toBeVisible();
+  await expect(page.locator(".award-image")).toHaveCount(3);
+  await expect(page.getByRole("heading", { name: "First Prize — Vivekotsav", exact: true })).toHaveCount(0);
   await cards.first().scrollIntoViewIfNeeded();
   await expect.poll(() => page.locator(".recognition-title").evaluate((element) => Number(getComputedStyle(element).opacity))).toBeLessThan(0.05);
   const rows = await page.locator(".award-tile-wrap").evaluateAll((elements) => elements.slice(0, 2).map((element) => ({ top: (element as HTMLElement).offsetTop, left: (element as HTMLElement).offsetLeft, width: (element as HTMLElement).offsetWidth })));
@@ -35,6 +40,8 @@ test("recognition title fades into six tilt cards with keyboard-accessible detai
   const before = await cards.first().getAttribute("style");
   await cards.first().hover({ position: { x: 80, y: 80 } });
   await expect.poll(() => cards.first().getAttribute("style")).not.toBe(before);
+  await expect(page.locator(".awards-cursor")).toHaveCount(0);
+  await expect(cards.first().locator("summary")).not.toHaveCSS("cursor", "none");
   await page.mouse.move(0, 0);
   const award = page.locator("details").filter({ has: page.getByRole("heading", { name: "First Place — SustainX", exact: true }) });
   await award.locator("summary").focus();
@@ -78,6 +85,6 @@ test.describe("reduced-motion recognition", () => {
     const card = page.locator(".award-tile").first();
     await card.hover();
     await expect(card).toHaveCSS("transform", "none");
-    await expect(page.locator(".awards-cursor")).toBeHidden();
+    await expect(page.locator(".awards-cursor")).toHaveCount(0);
   });
 });

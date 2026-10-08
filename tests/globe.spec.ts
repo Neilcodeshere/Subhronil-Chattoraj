@@ -47,7 +47,7 @@ test("WebGL renders real cover pixels, zooms during dragging, and restores the p
   expect(errors).toEqual([]);
 });
 
-test("wide desktop captions match the reference and rendering pauses away from the orbit", async ({ page }, testInfo) => {
+test("wide desktop captions are visible and rendering pauses away from the orbit", async ({ page }, testInfo) => {
   await page.setViewportSize({ width: 1920, height: 1080 });
   const canvas = await openOrbit(page);
   await expect(page.locator(".face-title")).toHaveText("Srishti Green Decor");

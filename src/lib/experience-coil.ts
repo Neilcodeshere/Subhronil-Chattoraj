@@ -1,7 +1,6 @@
 import { createAttribute, createProgram } from "./webgl";
 
-// Curved, scroll-driven cards, recreated from Visuvate's
-// Our Works section. Geometry and motion use the reference's world-space units.
+// Curved, scroll-driven experience cards arranged in a flared vertical helix.
 export type CoilExperience = {
   role: string;
   organization: string;
@@ -255,9 +254,10 @@ export function createExperienceCoil(canvas: HTMLCanvasElement, options: CoilOpt
     };
     const move = (event: PointerEvent) => {
       if (event.pointerType !== "mouse") return;
-      canvas.style.cursor = hit(event) !== null ? "pointer" : "";
+      if (hit(event) !== null) canvas.dataset.pointerHit = "true";
+      else delete canvas.dataset.pointerHit;
     };
-    const leave = () => { canvas.style.cursor = ""; };
+    const leave = () => { delete canvas.dataset.pointerHit; };
     let pointerDown: { x: number; y: number } | null = null;
     const down = (event: PointerEvent) => { pointerDown = { x: event.clientX, y: event.clientY }; };
     const click = (event: MouseEvent) => {

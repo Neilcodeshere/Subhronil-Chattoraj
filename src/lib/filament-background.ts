@@ -1,6 +1,6 @@
 import { createAttribute, createProgram } from "./webgl";
 
-// Visuvate's filament field, shared by the hero and experience section.
+// Animated purple filament field, shared by the hero and experience section.
 // A single sharp sample replaces the soft five-tap filter; full CSS-pixel
 // resolution and restrained grain keep the strands clear on large displays.
 const VERTEX = `
