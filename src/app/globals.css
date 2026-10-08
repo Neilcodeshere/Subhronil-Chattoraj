@@ -71,7 +71,7 @@ main:focus, section:focus { outline: none; }
 .skip-link:focus { transform: translateY(0); }
 
 /* Cursor-reactive loading transition */
-.loader-screen { --loader-x: 50vw; --loader-y: 50vh; --loader-shift-x: 0px; --loader-shift-y: 0px; position: fixed; inset: 0; z-index: 300; width: 100%; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; color: var(--text); overflow: hidden; isolation: isolate; background: #0b0a0e; cursor: crosshair; touch-action: none; }
+.loader-screen { --loader-x: 50vw; --loader-y: 50vh; --loader-shift-x: 0px; --loader-shift-y: 0px; position: fixed; inset: 0; z-index: 300; width: 100%; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; color: var(--text); overflow: hidden; isolation: isolate; background: #0b0a0e; cursor: inherit; touch-action: none; }
 .loader-screen:not([open]) { display: none; }
 .loader-screen[open] { animation: loaderAppear .4s both; }
 .loader-screen::backdrop { background: transparent; }
@@ -180,7 +180,7 @@ main:focus, section:focus { outline: none; }
 .project-image-link img { transition: transform .4s; }
 .project-image-link:hover img { transform: scale(1.025); }
 
-/* Rithvik Shetty's full-viewport InfiniteMenu orbit and overlay layout. */
+/* Full-viewport interactive project globe and overlay layout. */
 .project-orbit { position: relative; height: 220vh; width: 100%; border-block: 1px solid var(--line); background: #000; }
 .project-orbit-panel { position: sticky; top: 0; height: 100svh; width: 100%; overflow: hidden; }
 .infinite-menu-wrap { position: relative; width: 100%; height: 100%; }
@@ -218,7 +218,7 @@ main:focus, section:focus { outline: none; }
   .orbit-hint span { display: none; }
 }
 
-/* Product.inc-inspired GitHub contribution calendar. */
+/* GitHub contribution calendar. */
 .github-section { border-top: 1px solid var(--line); }
 .github-section .section-heading { margin-bottom: 55px; }
 .contribution-calendar { min-width: 0; min-height: 255px; }
@@ -318,7 +318,7 @@ main:focus, section:focus { outline: none; }
 .large-copy span { color: var(--accent); }
 .about-copy .text-link { margin-top: 10px; }
 
-/* Visuvate's full-screen curved experience coil and filament backdrop. */
+/* Full-screen curved experience coil and filament backdrop. */
 .experience-section { position: relative; background: #09070d; border-block: 1px solid var(--line); }
 .experience-stage { position: relative; isolation: isolate; padding: 100px 24px 50px; }
 .experience-title { text-align: center; pointer-events: none; transition: opacity .5s cubic-bezier(.76, 0, .24, 1); }
@@ -379,7 +379,7 @@ main:focus, section:focus { outline: none; }
 .is-paused .marquee-track, .marquee-section:hover .marquee-track, .marquee-section:focus-within .marquee-track { animation-play-state: paused; }
 @keyframes marquee { to { transform: translateX(-50%); } }
 
-/* Rithvik's sticky awards title and tilt-card structure, in violet. */
+/* Sticky awards title and tilt-card layout, in violet. */
 .recognition-section { position: relative; min-height: 200svh; background: #0b0712; color: #f5efff; }
 .recognition-hero { position: sticky; top: 0; height: 100svh; display: grid; place-items: center; padding: 48px; overflow: hidden; pointer-events: none; z-index: 20; }
 .recognition-background { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 20%, #7245a84a, transparent 65%), linear-gradient(160deg, #171020, #0b0712 70%); }
@@ -419,11 +419,6 @@ main:focus, section:focus { outline: none; }
 .award-details[open] .award-toggle svg { transform: rotate(90deg); }
 .award-description { max-height: 140px; overflow-y: auto; padding-top: 18px; }
 .award-description p { color: #e3d2f2; font-size: 13px; line-height: 1.85; }
-.awards-cursor { position: fixed; z-index: 120; width: 80px; height: 80px; display: grid; place-content: center; grid-auto-flow: column; border-radius: 14px; background: #271637; border: 1px solid #b79ae54d; color: #f2e6ff; font: 600 42px/1 "Space Grotesk Variable", sans-serif; letter-spacing: -.09em; pointer-events: none; translate: -50% -50%; box-shadow: 0 10px 25px #00000040; }
-.awards-cursor span { color: var(--accent); }
-@media (pointer: fine) and (prefers-reduced-motion: no-preference) {
-  .recognition-section[data-cursor-active="true"], .recognition-section[data-cursor-active="true"] * { cursor: none; }
-}
 @media (max-width: 767px) {
   .recognition-hero { padding: 24px 20px; }
   .recognition-count { font-size: 32px; margin-bottom: 25px; }
@@ -437,12 +432,10 @@ main:focus, section:focus { outline: none; }
   .award-date { font-size: 9px; letter-spacing: .04em; padding: 7px 10px; }
   .award-toggle { opacity: 1; transform: none; }
   .award-cover > svg { width: 150px; height: 150px; }
-  .awards-cursor { display: none; }
 }
 .recognition-reduced { min-height: 0; }
 .recognition-reduced .recognition-hero { position: relative; height: auto; padding-block: 100px; }
 .recognition-reduced .recognition-tiles { padding-top: 0; }
-.recognition-reduced .awards-cursor { display: none; }
 .certifications { margin-top: 65px; }
 .certifications > h3 { font-size: 32px; margin-bottom: 20px; }
 .certifications article { border-top: 1px solid var(--line); padding-block: 24px; }
@@ -499,7 +492,7 @@ main:focus, section:focus { outline: none; }
 .form-status { font-size: 12px; line-height: 1.8; color: var(--accent); }
 .form-status:empty { display: none; }
 
-/* Gertix-inspired code ribbon and cursor spotlight. */
+/* Code ribbon and cursor spotlight. */
 .site-footer { --footer-x: 50%; --footer-y: 50%; position: relative; isolation: isolate; overflow: hidden; display: flex; flex-direction: column; min-height: max(760px, 100svh); padding-block: 104px 28px; border-top: 1px solid var(--line); background: #0e0c12; touch-action: pan-y pinch-zoom; }
 .footer-artwork { position: absolute; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; user-select: none; }
 .footer-symbols { position: absolute; inset: 0; color: #8860c7; opacity: .65; mask-image: radial-gradient(circle 430px at var(--footer-x) var(--footer-y), #000, #0005 100%); }
@@ -744,6 +737,22 @@ main:focus, section:focus { outline: none; }
   .footer-symbols:not(.footer-symbols-lit) { mask-image: none; opacity: .3; }
 }
 
+/* Neon Pixel Cursor Duo: left arrow for hovering, right hand for clicking. */
+@media (hover: hover) and (pointer: fine) {
+  :root {
+    --cursor-hover: url("/cursors/pixel-arrow.png") 4 2, default;
+    --cursor-click: url("/cursors/pixel-hand.png") 6 4, pointer;
+  }
+  html, body, .hero-name, .experience-coil, dialog::backdrop { cursor: var(--cursor-hover); }
+  a, button, summary, label, select, input[type="radio"], input[type="checkbox"], [role="button"], .loader-enter, .action-button, .award-summary, .reason-options label { cursor: var(--cursor-click); }
+  .experience-coil[data-pointer-hit] { cursor: var(--cursor-click); }
+  input:not([type="radio"]):not([type="checkbox"]), textarea { cursor: text; }
+  button:disabled, [aria-disabled="true"] { cursor: var(--cursor-hover); }
+  #infinite-grid-menu-canvas, #infinite-grid-menu-canvas:active { cursor: var(--cursor-click); }
+  /* Keep the click artwork visible while a mouse press/drag is in progress. */
+  html:active, html:active *, html:active dialog::backdrop { cursor: var(--cursor-click) !important; }
+}
+
 @media (max-height: 520px) {
   .loader-content { padding-block: 18px; gap: 12px; }
   .loader-index { display: none; }
@@ -769,7 +778,6 @@ main:focus, section:focus { outline: none; }
   .recognition-section { min-height: 0; }
   .recognition-hero { position: relative; height: auto; padding-block: 70px; }
   .recognition-tiles { padding-top: 0; }
-  .awards-cursor { display: none; }
   .recognition-title h2:hover > span { transform: none; }
   .footer-symbols:not(.footer-symbols-lit) { mask-image: none; opacity: .3; }
   .footer-symbols-lit, .footer-hint { display: none; }

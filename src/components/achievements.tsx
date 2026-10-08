@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useRef, useState, type PointerEvent } from "react";
+import { useRef, type PointerEvent } from "react";
 import { motion, useMotionValue, useReducedMotion, useScroll, useSpring, useTransform } from "motion/react";
 import { ArrowUpRight, Award, GraduationCap, Medal, Trophy } from "lucide-react";
 import { achievements, certifications, type Achievement } from "@/content/achievements";
@@ -47,21 +47,7 @@ export function Achievements() {
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
   const titleScale = useTransform(scrollYProgress, [0, 0.2], [1, 0.8]);
   const titleOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
-  const cursorX = useMotionValue(-100);
-  const cursorY = useMotionValue(-100);
-  const x = useSpring(cursorX, { stiffness: 500, damping: 40, mass: 0.4 });
-  const y = useSpring(cursorY, { stiffness: 500, damping: 40, mass: 0.4 });
-  const [cursorActive, setCursorActive] = useState(false);
-
-  function move(event: PointerEvent<HTMLElement>) {
-    if (reduced || event.pointerType !== "mouse" || !window.matchMedia("(pointer: fine)").matches) return;
-    cursorX.set(event.clientX);
-    cursorY.set(event.clientY);
-    setCursorActive(true);
-  }
-
-  return <section ref={ref} id="recognition" className={`recognition-section${reduced ? " recognition-reduced" : ""}`} aria-labelledby="recognition-heading" tabIndex={-1} data-cursor-active={cursorActive && !reduced} onPointerMove={move} onPointerLeave={() => setCursorActive(false)}>
-    <motion.div className="awards-cursor" aria-hidden="true" style={{ left: x, top: y }} animate={{ opacity: cursorActive && !reduced ? 1 : 0, scale: cursorActive ? 1 : 0.6 }} transition={{ duration: 0.18, ease: "easeOut" }}>sc<span>.</span></motion.div>
+  return <section ref={ref} id="recognition" className={`recognition-section${reduced ? " recognition-reduced" : ""}`} aria-labelledby="recognition-heading" tabIndex={-1}>
     <div className="recognition-hero">
       <div className="recognition-background" aria-hidden="true" />
       <motion.div className="recognition-title" style={{ scale: reduced ? 1 : titleScale, opacity: reduced ? 1 : titleOpacity }}>

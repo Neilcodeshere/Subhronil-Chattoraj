@@ -1,8 +1,6 @@
-// WebGL renderer ported from Rithvik Shetty's InfiniteMenu implementation:
-// https://github.com/rithvikshettyy/rithvikshetty/blob/main/components/InfiniteMenu.jsx
-// The shaders, geometry, arcball physics, and camera parameters match that
-// implementation. Lifecycle cleanup, image failures, and keyboard navigation
-// are handled here for integration with the portfolio.
+// Interactive WebGL project globe with curved discs, arcball controls, and
+// camera motion. Includes lifecycle cleanup, image fallbacks, and keyboard
+// navigation for integration with the portfolio.
 import { mat4, quat, vec2, vec3 } from "gl-matrix";
 
 const discVertShaderSource = `#version 300 es
